@@ -1,4 +1,4 @@
-import { MenuItem, InputLabel, Select } from "@mui/material";
+import { MenuItem, InputLabel, Select, Button } from "@mui/material";
 import { Container } from "@mui/system";
 import * as React from 'react'
 
@@ -16,8 +16,6 @@ export function SearchByStops() {
     const handleEndChange = (event, newEndStop) => {
         updateEndStop(newEndStop.props.value)
     }
-
-    console.log(startStop, endStop)
 
     return (
         <Container>
@@ -49,6 +47,7 @@ export function SearchByStops() {
                     })
                 }
             </Select>
+            <Button>Search</Button>
         </Container>
     )
 }

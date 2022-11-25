@@ -1,7 +1,11 @@
-import { TextField } from '@mui/material';
+import { TextField, Button } from '@mui/material';
+import { Container } from '@mui/system';
 
 export function SearchByBus() {
     return (
-        <TextField id="outlined-basic" label="Enter Bus Number" variant="outlined" />
+        <Container>
+            <TextField id="outlined-basic" label="Enter Bus Number" variant="outlined" />
+            <Button>Search</Button>
+        </Container>
     )
 }
