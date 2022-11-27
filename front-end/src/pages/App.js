@@ -1,9 +1,9 @@
-import './App.css';
+import '../App.css';
 import * as React from 'react';
 import Container from '@mui/material/Container';
 import { ToggleButton, ToggleButtonGroup } from '@mui/material';
-import { SearchByBus } from './components/SearchByBus';
-import { SearchByStops } from './components/SearchByStops';
+import { SearchByBus } from '../components/SearchByBus';
+import { SearchByStops } from '../components/SearchByStops';
 
 function App() {
   const [selectedButton, updatedSelected] = React.useState('');
