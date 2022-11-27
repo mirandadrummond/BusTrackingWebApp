@@ -26,7 +26,7 @@ export function SearchByStops() {
 
     useEffect(() => {
         console.log("test1");
-        axios('http://localhost:4000/bus_stop', {mode: "no-cors"}).then(response => {
+        axios('http://localhost:4000/bus_stop').then(response => {
             console.log(response.data)
         }).catch(err => {
             console.error(`Error fetching data: `, err)
