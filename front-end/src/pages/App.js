@@ -12,11 +12,6 @@ function App() {
     updatedSelected(newSearch);
   }
 
-  useEffect(() => {
-    console.log(selectedButton)
-  })
-
-
   return (
     <div className="App">
       <Container id="search">

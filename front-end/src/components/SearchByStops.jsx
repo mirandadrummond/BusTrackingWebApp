@@ -3,6 +3,7 @@ import { Container } from "@mui/system";
 import * as React from 'react'
 import { useEffect, useState } from 'react'; 
 import { getBusStops } from "../services/fetch";
+import axios from 'axios'
 
 export function SearchByStops() {
     const [startStop, updateStartStop] = React.useState('');
@@ -25,15 +26,10 @@ export function SearchByStops() {
 
     useEffect(() => {
         console.log("test1");
-        fetch('http://localhost:4000/bus_stop').then(response => {
-            console.log("test2")
-            if (response.ok) {
-                console.log(response.json)
-                return response.json
-            }
-            throw response
+        axios('http://localhost:4000/bus_stop', {mode: "no-cors"}).then(response => {
+            console.log(response.data)
         }).catch(err => {
-            console.error(`Error fetching data ${err}`)
+            console.error(`Error fetching data: `, err)
         })
     })
 
