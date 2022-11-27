@@ -12,12 +12,11 @@ const connection = mysql_connector.createConnection({
 });
 
 app.get('/bus_stop', (req, res) => {
-  connection.connect();
   connection.query("SELECT * FROM bus_stop", function (err, result, fields) {
     if (err) throw err;
     res.json(result);
 });
-  connection.end();
+//   connection.end();
 })
 
 app.listen(port, () => {

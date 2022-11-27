@@ -1,16 +1,20 @@
-import '../App.css';
-import * as React from 'react';
+import '../styles/App.css';
+import { useEffect, useState } from 'react';
 import Container from '@mui/material/Container';
 import { ToggleButton, ToggleButtonGroup } from '@mui/material';
 import { SearchByBus } from '../components/SearchByBus';
 import { SearchByStops } from '../components/SearchByStops';
 
 function App() {
-  const [selectedButton, updatedSelected] = React.useState('');
+  const [selectedButton, updatedSelected] = useState('');
 
   const showSelectedSearch = (event, newSearch) => {
     updatedSelected(newSearch);
   }
+
+  useEffect(() => {
+    console.log(selectedButton)
+  })
 
 
   return (

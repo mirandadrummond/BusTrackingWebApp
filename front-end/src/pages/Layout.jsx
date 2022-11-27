@@ -5,10 +5,10 @@ const Layout = () => {
         <>
             <nav>
                 <ul id="navBar">
-                    <li class="link">
+                    <li className="link">
                         <Link to="/">Home</Link>
                     </li>
-                    <li class="link">
+                    <li className="link">
                         <Link to="/about">About</Link>
                     </li>
                 </ul>
