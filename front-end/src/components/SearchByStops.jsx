@@ -4,13 +4,15 @@ import * as React from 'react'
 import { useEffect, useState } from 'react';
 import axios from 'axios'
 import { Link } from "react-router-dom";
+import { useLocation } from 'react-router-dom'
 
-export function SearchByStops() {
-    const [startStop, updateStartStop] = useState('');
-    const [endStop, updateEndStop] = useState('');
-    const [stops, setStops] = useState(['Not Loaded']);
-    const [loading, isLoading] = useState(true);
+export function SearchByStops(props) {
+    const [startStop, updateStartStop] = useState(props.startStop);
+    const [endStop, updateEndStop] = useState(props.endStop);
+    const [stops, setStops] = useState(props.bStops);
+    const [loading, isLoading] = useState(props.loading);
     const [error, isError] = useState(false);
+    const location = useLocation();
 
     const handleStartChange = (event, newStartStop) => {
         updateStartStop(newStartStop.props.value)
@@ -30,6 +32,13 @@ export function SearchByStops() {
             }).finally(r => isLoading(false));
         }
     })
+
+    const getLink = () =>{
+        if (location.pathname !== '/') {
+            return '.'
+        } 
+        return 'stop_status'
+    }
 
     return (
         <div>
@@ -65,7 +74,7 @@ export function SearchByStops() {
                                     })
                                 }
                             </Select>
-                            <Link to="stop_status">
+                            <Link to={getLink()} state={{busStops: stops, startStop: startStop, endStop: endStop}}>
                                 <Button>Search</Button>
                             </Link>
                         </Container>
