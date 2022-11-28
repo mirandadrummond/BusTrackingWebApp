@@ -1,8 +1,6 @@
 const express = require('express')
 const mysql_connector = require('mysql');
 const cors = require('cors')
-// import * as express from 'express'
-// import * as mysql_connector from 'mysql'
 const app = express()
 app.use(cors())
 const port = 4000
@@ -14,12 +12,33 @@ const connection = mysql_connector.createConnection({
 });
 
 app.get('/bus_stop', (req, res) => {
-  connection.query("SELECT name FROM bus_stop", function (err, result, fields) {
-    if (err) throw err;
-    res.json(result);
-});
+    connection.query("SELECT * FROM bus_stop", function (err, result, fields) {
+        if (err) throw err;
+        res.json(result);
+    });
+})
+
+app.get('/status', (req, res) => {
+    connection.query("SELECT * FROM status", function (err, result, fields) {
+        if (err) throw err;
+        res.json(result);
+    });
+})
+
+app.get('/stop_distance', (req, res) => {
+    connection.query("SELECT * FROM stop_distance", function (err, result, fields) {
+        if (err) throw err;
+        res.json(result);
+    });
+})
+
+app.get('/buses', (req, res) => {
+    connection.query("SELECT * FROM bus", function (err, result, fields) {
+        if (err) throw err;
+        res.json(result);
+    });
 })
 
 app.listen(port, () => {
-  console.log(`Listening at http://localhost:${port} :)`)
+    console.log(`Listening at http://localhost:${port} :)`)
 })
