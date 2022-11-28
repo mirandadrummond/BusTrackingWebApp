@@ -8,6 +8,17 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
 export default function AdminLogin(props) {
+
+    return (
+        <div>
+            {
+                props.loggedIn ? <LogOut setAdmin={props.setAdmin}/> : <Login setAdmin={props.setAdmin} />
+            }
+        </div>
+    );
+}
+
+function Login(props) {
     const [open, setOpen] = useState(false);
     const [username, setUser] = useState('');
     const [pwd, updatePwd] = useState('');
@@ -71,5 +82,20 @@ export default function AdminLogin(props) {
                 </DialogActions>
             </Dialog>
         </div>
-    );
+    )
+}
+
+function LogOut(props) {
+
+    const handleLogOut = () => {
+        props.setAdmin(false);
+    }
+
+    return (
+        <div>
+            <Button variant="outlined" onClick={handleLogOut}>
+                Log Out
+            </Button>
+        </div>
+    )
 }
