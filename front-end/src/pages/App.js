@@ -1,7 +1,7 @@
 import '../styles/App.css';
 import { useState } from 'react';
 import Container from '@mui/material/Container';
-import { ToggleButton, ToggleButtonGroup } from '@mui/material';
+import { ToggleButton, ToggleButtonGroup, Button, Dialog, DialogTitle, DialogContent, TextField, DialogActions, DialogContentText } from '@mui/material';
 import { SearchByBus } from '../components/SearchByBus';
 import { SearchByStops } from '../components/SearchByStops';
 import AdminLogin from "../components/AdminLogin";
@@ -16,7 +16,7 @@ function App() {
 
   return (
     <div className="App">
-      <AdminLogin setAdmin={setAdmin} loggedIn={isAdmin}/>
+      <AdminLogin setAdmin={setAdmin} loggedIn={isAdmin} />
       <Container id="search">
         <ToggleButtonGroup
           value={selectedButton}
@@ -33,11 +33,7 @@ function App() {
             <SearchBar selected={selectedButton} />
         }
       </Container>
-      <Container>
-        {
-          !isAdmin ? <></> : <div>Logged in!</div> 
-        }
-      </Container>
+      <AdminControls isAdmin={isAdmin}/>
     </div>
   );
 }
@@ -48,6 +44,75 @@ function SearchBar(props) {
       {
         props.selected === 'byBus' ? <SearchByBus searchVal={''} /> : <SearchByStops startStop='' endStop='' bStops={['Not Loaded']} loading={true} />
       }
+    </div>
+  )
+}
+
+function AdminControls(props) {
+
+  return (
+    <Container>
+      {
+        !props.isAdmin ? <></> :
+          <div>
+            <AddBusButton />
+          </div>
+      }
+    </Container>
+  )
+}
+
+function AddBusButton() {
+
+  const [addBusVisible, updateBusButton] = useState(false);
+  const [newBusNum, setNewBusNum] = useState('')
+
+  const handleClickOpen = () => {
+    updateBusButton(true)
+  }
+
+  const handleClose = () => {
+    updateBusButton(false)
+  }
+
+  const handleNewBusNumber = (event) => {
+    const re = /^[0-9\b]+$/;
+
+    if (event.target.value === '' || re.test(event.target.value)) {
+      setNewBusNum(event.target.value)
+    }
+  }
+
+  const handleBusAdd = () => {
+
+  }
+
+  return (
+    <div>
+      <Button variant="outlined" onClick={handleClickOpen}>
+        Add Bus
+      </Button>
+      <Dialog open={addBusVisible} onClose={handleClose}>
+        <DialogTitle>Admin Login</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Enter the bus number you'd like to add
+          </DialogContentText>
+          <TextField
+            autoFocus
+            margin="dense"
+            id="add-bus"
+            label="Enter Bus Number"
+            variant="standard"
+            value={newBusNum}
+            onChange={handleNewBusNumber}
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Close</Button>
+          <Button onClick={handleBusAdd}>Add</Button>
+        </DialogActions>
+      </Dialog>
     </div>
   )
 }

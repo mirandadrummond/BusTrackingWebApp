@@ -22,7 +22,7 @@ export default function BusStatus() {
     return (
         <div>
             {
-                loading ? <div>Loading Data</div> : error ? <div>Error Loading Data. Please refresh the page.</div> :
+                loading ? <div>Loading Data</div> : error ? <div>Error Loading Data. Please refresh the page and try again.</div> :
                     <Container>
                         <SearchByBus searchVal={loc.state.busNum}/>
                         <ShowBus bus={loc.state.busNum} buses={buses} />
