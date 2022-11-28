@@ -1,5 +1,5 @@
 import '../styles/App.css';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Container from '@mui/material/Container';
 import { ToggleButton, ToggleButtonGroup } from '@mui/material';
 import { SearchByBus } from '../components/SearchByBus';
@@ -38,7 +38,7 @@ function SearchBar(props) {
   return (
     <div>
       {
-        props.selected === 'byBus' ? <SearchByBus /> : <SearchByStops startStop='' endStop='' bStops={['Not Loaded']} loading={true} />
+        props.selected === 'byBus' ? <SearchByBus searchVal={''}/> : <SearchByStops startStop='' endStop='' bStops={['Not Loaded']} loading={true} />
       }
     </div>
   )

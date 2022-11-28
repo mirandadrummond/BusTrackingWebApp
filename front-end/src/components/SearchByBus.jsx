@@ -6,9 +6,9 @@ import { getLink } from '../utils';
 import { useState } from 'react';
 
 
-export function SearchByBus() {
+export function SearchByBus(props) {
     const location = useLocation();
-    const [busNumber, setNumber] = useState('');
+    const [busNumber, setNumber] = useState(props.searchVal);
 
     const handleChange = (event) => {
         const re = /^[0-9\b]+$/;
