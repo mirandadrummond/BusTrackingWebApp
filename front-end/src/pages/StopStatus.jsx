@@ -1,8 +1,10 @@
 import { SearchByStops } from "../components/SearchByStops";
 import { useLocation } from 'react-router-dom'
+import { useState, useEffect } from 'react';
 
 export default function StopStatus() {
     const loc = useLocation();
+    cons
 
     return (
         <div>

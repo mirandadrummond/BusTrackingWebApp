@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios'
 import { Link } from "react-router-dom";
 import { useLocation } from 'react-router-dom'
+import { getLink } from "../utils";
 
 export function SearchByStops(props) {
     const [startStop, updateStartStop] = useState(props.startStop);
@@ -33,18 +34,11 @@ export function SearchByStops(props) {
         }
     })
 
-    const getLink = () =>{
-        if (location.pathname !== '/') {
-            return '.'
-        } 
-        return 'stop_status'
-    }
-
     return (
         <div>
             {
                 loading ? <div>Loading</div> :
-                    error ? <div>Encountered Error when loading. Please refresh the page.</div> :
+                    error ? <div id="stop-search-error">Encountered Error when loading. Please refresh the page.</div> :
                         <Container>
                             <InputLabel id="selectStartStop">Starting Stop</InputLabel>
                             <Select
@@ -70,11 +64,15 @@ export function SearchByStops(props) {
                             >
                                 {
                                     stops.filter(stop => stop !== startStop).map(filteredStop => {
-                                        return <MenuItem value={filteredStop}>{filteredStop}</MenuItem>
+                                        return <MenuItem
+                                            key={`key-${filteredStop}`}
+                                            value={filteredStop}>
+                                            {filteredStop}
+                                        </MenuItem>
                                     })
                                 }
                             </Select>
-                            <Link to={getLink()} state={{busStops: stops, startStop: startStop, endStop: endStop}}>
+                            <Link to={getLink(location, 'stop_status')} state={{ busStops: stops, startStop: startStop, endStop: endStop }}>
                                 <Button>Search</Button>
                             </Link>
                         </Container>
