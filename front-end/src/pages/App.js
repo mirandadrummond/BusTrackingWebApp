@@ -39,7 +39,7 @@ function App() {
 
 function SearchBar(props) {
   return (
-    <div>
+    <div id="searchType">
       {
         props.selected === 'byBus' ? <SearchByBus searchVal={''} /> : <SearchByStops startStop='' endStop='' bStops={['Not Loaded']} loading={true} />
       }
@@ -50,7 +50,7 @@ function SearchBar(props) {
 function AdminControls(props) {
 
   return (
-    <Container>
+    <Container id="adminControls">
       {
         !props.isAdmin ? <></> :
           <div>
