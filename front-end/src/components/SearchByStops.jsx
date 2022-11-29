@@ -10,8 +10,10 @@ import { getLink } from "../utils";
 export function SearchByStops(props) {
     const [startStop, updateStartStop] = useState(props.startStop);
     const [endStop, updateEndStop] = useState(props.endStop);
-    const [stops, setStops] = useState(props.bStops);
+    const [routes, setRoutes] = useState(props.bStops);
+    const [stops, setStops] = useState([]);
     const [loading, isLoading] = useState(props.loading);
+    const [line, updateLine] = useState(0);
     const [error, isError] = useState(false);
     const location = useLocation();
 
@@ -23,16 +25,54 @@ export function SearchByStops(props) {
         updateEndStop(newEndStop.props.value)
     }
 
+    const handleLineChange = (event, newLine) => {
+        updateLine(newLine.props.value)
+    }
+
     useEffect(() => {
-        if (stops[0] === 'Not Loaded') {
-            axios('http://localhost:4000/bus_stop').then(response => {
-                setStops(response.data)
-            }).catch(err => {
-                console.error(`Error fetching data: `, err)
-                isError(true);
-            }).finally(r => isLoading(false));
+        let busRoutes = []
+        axios('http://localhost:4000/bus_stop_route_one').then(response => {
+            busRoutes.push({line: 0, stops: getStops(response.data)})
+        }).catch(err => {
+            console.error(`Error fetching data: `, err)
+            isError(true);
+        })
+
+        axios('http://localhost:4000/bus_stop_route_two').then(response => {
+            busRoutes.push({line: 1, stops: getStops(response.data)})
+            console.log("Table 2")
+        }).catch(err => {
+            console.error(`Error fetching data: `, err)
+            isError(true);
+        }).finally(r => {
+            isLoading(false)
+
+            setRoutes(busRoutes)
+            setStops(busRoutes.filter(route => route.line === line)[0].stops)
+        });
+    }, [])
+
+    useEffect(() => {
+        if (!loading) {
+            setStops(routes.filter(route => route.line === line)[0].stops)
         }
-    })
+    }, [line])
+
+    const getStops = (arr) => {
+        return arr.map((currentStop, i, arr) => {
+            let stopName = currentStop.name;
+            if (!isNaN(parseInt(stopName.charAt(stopName.length - 1)) && isNaN(parseInt(stopName.charAt(stopName.length - 2))))) {
+                let direction = parseInt(stopName.charAt(stopName.length - 1)) === 1 ? ' (Inbound)' : ' (Outbound)'
+
+                return { id: currentStop.bus_stop_id, name: (stopName.slice(0, stopName.length - 1) + direction) }
+            } else {
+                return currentStop
+            }
+        })
+    }
+
+    console.log(stops)
+
 
     return (
         <div className="actionBlock">
@@ -41,6 +81,19 @@ export function SearchByStops(props) {
                     error ? <div id="stop-search-error">Encountered Error when loading. Please refresh the page.</div> :
                         <Container id="stopSelect">
                             <div id="selectInputBlocks">
+                                <div class="selectInput">
+                                    <InputLabel className="selectStop" id="selectLineLabel">Select Line</InputLabel>
+                                    <Select
+                                        id="selectLine"
+                                        value={line}
+                                        label="Route Line"
+                                        className="stopSelection"
+                                        onChange={handleLineChange}
+                                    >
+                                        <MenuItem value={0}>Line 1</MenuItem>
+                                        <MenuItem value={1}>Line 2</MenuItem>
+                                    </Select>
+                                </div>
                                 <div class="selectInput">
                                     <InputLabel className="selectStop" id="selectStartStop">Starting Stop</InputLabel>
                                     <Select

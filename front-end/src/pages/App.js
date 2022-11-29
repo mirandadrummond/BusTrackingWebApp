@@ -42,7 +42,7 @@ function SearchBar(props) {
   return (
     <div id="searchType">
       {
-        props.selected === 'byBus' ? <SearchByBus searchVal={''} /> : <SearchByStops startStop='' endStop='' bStops={['Not Loaded']} loading={true} />
+        props.selected === 'byBus' ? <SearchByBus searchVal={''} /> : <SearchByStops startStop='' endStop='' bStops={[]} loading={true} />
       }
     </div>
   )
