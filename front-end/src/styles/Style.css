@@ -65,12 +65,13 @@ fieldset {
   color: #FFFFFF !important;
 }
 
-#adminLogin {
-  padding: 11px;
+.adminButton {
+  padding: 11px !important;
+  width: 125px !important;
 }
 
-#adminLogout {
-  padding: 11px;
+.adminAction {
+  padding: 11px !important;
 }
 
 #searchByBus {
@@ -124,11 +125,12 @@ label {
 
 #mainAppActions {
   width: 100%;
+  height: 2%;
 }
 
 #mainAppActions > button {
   margin-right: 5%;
-  width: 30%;
+  width: 80%;
   border-radius: 2%
 }
 

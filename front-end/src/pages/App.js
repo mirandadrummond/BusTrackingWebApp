@@ -25,6 +25,7 @@ function App() {
           <ToggleButton value='byBus'>Search by Bus</ToggleButton>
           <ToggleButton value='byStop'>Search by Stops</ToggleButton>
           <AdminLogin setAdmin={setAdmin} loggedIn={isAdmin} />
+          <AdminControls isAdmin={isAdmin}/>
         </ToggleButtonGroup>
       </Container>
       <Container id="searchBar">
@@ -33,7 +34,6 @@ function App() {
             <SearchBar selected={selectedButton} />
         }
       </Container>
-      <AdminControls isAdmin={isAdmin}/>
     </div>
   );
 }
@@ -54,9 +54,7 @@ function AdminControls(props) {
     <Container id="adminControls">
       {
         !props.isAdmin ? <></> :
-          <div>
             <AddBusButton />
-          </div>
       }
     </Container>
   )
@@ -89,7 +87,7 @@ function AddBusButton() {
 
   return (
     <div>
-      <Button variant="outlined" onClick={handleClickOpen}>
+      <Button variant="outlined" className="adminAction" onClick={handleClickOpen}>
         Add Bus
       </Button>
       <Dialog open={addBusVisible} onClose={handleClose}>

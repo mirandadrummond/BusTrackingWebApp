@@ -10,11 +10,11 @@ import DialogTitle from '@mui/material/DialogTitle';
 export default function AdminLogin(props) {
 
     return (
-        <div>
+        <>
             {
-                props.loggedIn ? <LogOut setAdmin={props.setAdmin}/> : <Login setAdmin={props.setAdmin} />
+                props.loggedIn ? <LogOut setAdmin={props.setAdmin} /> : <Login setAdmin={props.setAdmin} />
             }
-        </div>
+        </>
     );
 }
 
@@ -48,7 +48,7 @@ function Login(props) {
 
     return (
         <div>
-            <Button variant="outlined" id="adminLogin" onClick={handleClickOpen}>
+            <Button variant="outlined" className="adminButton" id="adminLogin" onClick={handleClickOpen}>
                 Admin Login
             </Button>
             <Dialog open={open} onClose={handleClose}>
@@ -95,7 +95,7 @@ function LogOut(props) {
 
     return (
         <div>
-            <Button variant="outlined" id="adminLogout" onClick={handleLogOut}>
+            <Button variant="outlined" className="adminButton" id="adminLogout" onClick={handleLogOut}>
                 Log Out
             </Button>
         </div>
