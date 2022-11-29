@@ -34,6 +34,7 @@ button {
 }
 
 #link {
+  text-decoration: none;
   padding: 5px;
   margin-right: 10px;
   border-radius: 10%;
@@ -136,4 +137,8 @@ label {
 
 #searchType {
   width: 100%;
+}
+
+#searchBar {
+  margin-top: 5%;
 }
