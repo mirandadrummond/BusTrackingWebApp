@@ -15,7 +15,6 @@ function App() {
 
   return (
     <div className="App">
-      <AdminLogin setAdmin={setAdmin} loggedIn={isAdmin} />
       <Container id="search">
         <ToggleButtonGroup
           value={selectedButton}
@@ -24,6 +23,7 @@ function App() {
         >
           <ToggleButton value='byBus'>Search by Bus</ToggleButton>
           <ToggleButton value='byStop'>Search by Stops</ToggleButton>
+          <AdminLogin setAdmin={setAdmin} loggedIn={isAdmin} />
         </ToggleButtonGroup>
       </Container>
       <Container id="searchBar">

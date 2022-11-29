@@ -3,7 +3,13 @@ body {
   margin-left: 0%;
   width: 100%;
   background-color: #242333;
-  color: #FFFFFF;
+  color: #FFFFFF !important;
+}
+
+button {
+  border-color: #FFFFFF !important;
+  color: #FFFFFF !important;
+
 }
 
 #nav {
@@ -44,5 +50,18 @@ body {
 .Mui-selected {
   border-color: #01B0D3 !important;
   background-color: #01B0D3 !important;
+  color: #FFFFFF !important;
+}
+
+#adminLogin {
+  padding: 11px;
+}
+
+#searchByBus {
+  margin-top: 20pt;
+}
+
+#outlined-basic {
+  border-color: #FFFFFF !important;
   color: #FFFFFF !important;
 }

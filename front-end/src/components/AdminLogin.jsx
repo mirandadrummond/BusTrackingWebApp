@@ -48,7 +48,7 @@ function Login(props) {
 
     return (
         <div>
-            <Button variant="outlined" onClick={handleClickOpen}>
+            <Button variant="outlined" id="adminLogin" onClick={handleClickOpen}>
                 Admin Login
             </Button>
             <Dialog open={open} onClose={handleClose}>
