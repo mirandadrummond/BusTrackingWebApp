@@ -26,7 +26,7 @@ export function SearchByStops(props) {
     useEffect(() => {
         if (stops[0] === 'Not Loaded') {
             axios('http://localhost:4000/bus_stop').then(response => {
-                setStops(response.data.map(v => v.name))
+                setStops(response.data)
             }).catch(err => {
                 console.error(`Error fetching data: `, err)
                 isError(true);
@@ -53,7 +53,7 @@ export function SearchByStops(props) {
                                         {
                                             stops.filter(stop => stop !== endStop).map(filteredStop => {
                                                 return (
-                                                    <MenuItem value={filteredStop}>{filteredStop}</MenuItem>
+                                                    <MenuItem value={filteredStop.name}>{filteredStop.name}</MenuItem>
                                                 )
                                             })
                                         }
@@ -71,9 +71,9 @@ export function SearchByStops(props) {
                                         {
                                             stops.filter(stop => stop !== startStop).map(filteredStop => {
                                                 return <MenuItem
-                                                    key={`key-${filteredStop}`}
-                                                    value={filteredStop}>
-                                                    {filteredStop}
+                                                    key={`key-${filteredStop.name}`}
+                                                    value={filteredStop.name}>
+                                                    {filteredStop.name}
                                                 </MenuItem>
                                             })
                                         }
