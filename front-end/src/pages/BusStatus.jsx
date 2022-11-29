@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom'
 import { useState, useEffect } from 'react';
 import axios from 'axios'
 import { Container } from "@mui/system";
-import { cleanStopString } from '../utils'
+import { cleanStopString, formatTimes } from '../utils'
 
 export default function BusStatus() {
     const loc = useLocation();
@@ -38,7 +38,8 @@ function ShowBus(props) {
             axios(`http://localhost:4000/bus_stop_route_${routeNumber}`).then(response => {
                 const stops = response.data
                 setTimes(times.map(time => {
-                    return { stopName: cleanStopString(stops.find(stop => stop.bus_stop_id === time.stops_number).name), time: time[`bus_${busId}`] }
+                    const diff = routeNumber === 'two' ? 8 : 0
+                    return { stopName: cleanStopString(stops.find(stop => stop.bus_stop_id === (time.stops_number - diff)).name), time: time[`bus_${busId}`] }
                 }))
             }).catch(err => {
                 console.error(`Error fetching data: `, err)
@@ -49,15 +50,6 @@ function ShowBus(props) {
             isError(true);
         }).finally(r => isLoading(false));
     }, [])
-
-
-    const formatTimes = (time) => {
-        const currentTime = new Date(Date.now()).getTime();
-        const arrivalTime = new Date(time).getTime();
-        const diff = new Date(arrivalTime - currentTime)
-        console.log(currentTime, arrivalTime, diff)
-        return diff.getTime() / 6000;
-    }
 
     return (
         <>

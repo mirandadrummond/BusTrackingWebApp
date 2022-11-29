@@ -10,8 +10,8 @@ import { getLink, getStops } from "../utils";
 export function SearchByStops(props) {
     const [startStop, updateStartStop] = useState(props.startStop);
     const [endStop, updateEndStop] = useState(props.endStop);
-    const [routes, setRoutes] = useState(props.bStops);
-    const [stops, setStops] = useState([]);
+    const [routes, setRoutes] = useState(props.routes);
+    const [stops, setStops] = useState(props.bStops);
     const [loading, isLoading] = useState(props.loading);
     const [line, updateLine] = useState(0);
     const [error, isError] = useState(false);
@@ -40,7 +40,6 @@ export function SearchByStops(props) {
 
         axios('http://localhost:4000/bus_stop_route_two').then(response => {
             busRoutes.push({line: 1, stops: getStops(response.data)})
-            console.log("Table 2")
         }).catch(err => {
             console.error(`Error fetching data: `, err)
             isError(true);
@@ -57,9 +56,6 @@ export function SearchByStops(props) {
             setStops(routes.filter(route => route.line === line)[0].stops)
         }
     }, [line])
-
-    console.log(stops)
-
 
     return (
         <div className="actionBlock">
@@ -120,7 +116,7 @@ export function SearchByStops(props) {
                                     </Select>
                                 </div>
                             </div>
-                            <Link to={getLink(location, 'stop_status')} state={{ busStops: stops, startStop: startStop, endStop: endStop }}>
+                            <Link to={getLink(location, 'stop_status')} state={{ line: line, routes: routes, busStops: stops, startStop: startStop, endStop: endStop }}>
                                 <Button>Search</Button>
                             </Link>
                         </Container>

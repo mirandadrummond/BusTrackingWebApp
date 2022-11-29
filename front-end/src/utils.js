@@ -20,3 +20,11 @@ export const cleanStopString = (str) => {
     }
     return str
 }
+
+export const formatTimes = (time) => {
+    const currentTime = new Date(Date.now()).getTime();
+    const arrivalTime = new Date(time).getTime();
+    const diff = new Date(arrivalTime - currentTime)
+    console.log(currentTime, arrivalTime, diff)
+    return (diff.getTime() / 6000).toFixed(2);
+}

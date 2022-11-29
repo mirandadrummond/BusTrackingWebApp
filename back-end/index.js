@@ -11,19 +11,34 @@ const connection = mysql_connector.createConnection({
     database: "DUDB_1"
 });
 
+app.get('/bus_stops', (req, res) => {
+    connection.query("SELECT * FROM stop_distance ", function (err, result, fields) {
+        if (err) throw err;
+        res.json(result);
+    });
+})
+
 app.get('/bus_stop_route_one', (req, res) => {
-    connection.query("SELECT * FROM bus_stop_route_one", function (err, result, fields) {
+    connection.query("SELECT * FROM bus_stop_route_one ", function (err, result, fields) {
         if (err) throw err;
         res.json(result);
     });
 })
 
 app.get('/bus_stop_route_two', (req, res) => {
-    connection.query("SELECT * FROM bus_stop_route_two", function (err, result, fields) {
+    connection.query("SELECT * FROM bus_stop_route_two ", function (err, result, fields) {
         if (err) throw err;
         res.json(result);
     });
 })
+
+app.get('/pairings', (req, res) => {
+    connection.query("SELECT * FROM stop_pairings ", function (err, result, fields) {
+        if (err) throw err;
+        res.json(result);
+    });
+})
+
 
 app.get('/time_screen_one', (req, res) => {
     connection.query("SELECT * FROM time_screen_route_one", function (err, result, fields) {
