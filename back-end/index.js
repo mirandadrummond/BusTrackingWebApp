@@ -18,15 +18,8 @@ app.get('/bus_stop', (req, res) => {
     });
 })
 
-app.get('/status', (req, res) => {
-    connection.query("SELECT * FROM status", function (err, result, fields) {
-        if (err) throw err;
-        res.json(result);
-    });
-})
-
-app.get('/stop_distance', (req, res) => {
-    connection.query("SELECT * FROM stop_distance", function (err, result, fields) {
+app.get('/time_screen', (req, res) => {
+    connection.query("SELECT * FROM time_screen_route_one", function (err, result, fields) {
         if (err) throw err;
         res.json(result);
     });

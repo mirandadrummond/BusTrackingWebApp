@@ -1,7 +1,6 @@
 
-
 export const getLink = (loc, defaultLink) => {
-        if (loc.pathname !== '/') {// if (location.pathname !== '/') {
+        if (loc.pathname !== '/') {
             return '.'
         }
         return defaultLink
