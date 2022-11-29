@@ -20,6 +20,7 @@ function App() {
           value={selectedButton}
           exclusive
           onChange={showSelectedSearch}
+          id="mainAppActions"
         >
           <ToggleButton value='byBus'>Search by Bus</ToggleButton>
           <ToggleButton value='byStop'>Search by Stops</ToggleButton>

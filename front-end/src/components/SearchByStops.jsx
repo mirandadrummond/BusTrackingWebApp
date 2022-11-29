@@ -35,43 +35,51 @@ export function SearchByStops(props) {
     })
 
     return (
-        <div>
+        <div className="actionBlock">
             {
                 loading ? <div>Loading</div> :
                     error ? <div id="stop-search-error">Encountered Error when loading. Please refresh the page.</div> :
-                        <Container>
-                            <InputLabel id="selectStartStop">Starting Stop</InputLabel>
-                            <Select
-                                id="selectStartStop"
-                                value={startStop}
-                                label="Starting Stop"
-                                onChange={handleStartChange}
-                            >
-                                {
-                                    stops.filter(stop => stop !== endStop).map(filteredStop => {
-                                        return (
-                                            <MenuItem value={filteredStop}>{filteredStop}</MenuItem>
-                                        )
-                                    })
-                                }
-                            </Select>
-                            <InputLabel id="selectEndStop">Ending Stop</InputLabel>
-                            <Select
-                                id="selectEndStop"
-                                value={endStop}
-                                label="Ending Stop"
-                                onChange={handleEndChange}
-                            >
-                                {
-                                    stops.filter(stop => stop !== startStop).map(filteredStop => {
-                                        return <MenuItem
-                                            key={`key-${filteredStop}`}
-                                            value={filteredStop}>
-                                            {filteredStop}
-                                        </MenuItem>
-                                    })
-                                }
-                            </Select>
+                        <Container id="stopSelect">
+                            <div id="selectInputBlocks">
+                                <div class="selectInput">
+                                    <InputLabel className="selectStop" id="selectStartStop">Starting Stop</InputLabel>
+                                    <Select
+                                        id="selectStartStop"
+                                        value={startStop}
+                                        label="Starting Stop"
+                                        className="stopSelection"
+                                        onChange={handleStartChange}
+                                    >
+                                        {
+                                            stops.filter(stop => stop !== endStop).map(filteredStop => {
+                                                return (
+                                                    <MenuItem value={filteredStop}>{filteredStop}</MenuItem>
+                                                )
+                                            })
+                                        }
+                                    </Select>
+                                </div>
+                                <div className="selectInput">
+                                    <InputLabel className="selectStop" id="selectEndStop">Ending Stop</InputLabel>
+                                    <Select
+                                        id="selectEndStop"
+                                        className="stopSelection"
+                                        value={endStop}
+                                        label="Ending Stop"
+                                        onChange={handleEndChange}
+                                    >
+                                        {
+                                            stops.filter(stop => stop !== startStop).map(filteredStop => {
+                                                return <MenuItem
+                                                    key={`key-${filteredStop}`}
+                                                    value={filteredStop}>
+                                                    {filteredStop}
+                                                </MenuItem>
+                                            })
+                                        }
+                                    </Select>
+                                </div>
+                            </div>
                             <Link to={getLink(location, 'stop_status')} state={{ busStops: stops, startStop: startStop, endStop: endStop }}>
                                 <Button>Search</Button>
                             </Link>

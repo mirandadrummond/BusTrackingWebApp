@@ -69,6 +69,10 @@ fieldset {
   padding: 11px;
 }
 
+#adminLogout {
+  padding: 11px;
+}
+
 #searchByBus {
   margin-top: 20pt;
 }
@@ -84,4 +88,50 @@ fieldset {
 
 .dialogButton {
   color: #242333 !important;
+}
+
+.dialogTextField {
+  width: 30%;
+  margin-right: 50px !important;
+}
+
+label {
+  color: #FFFFFF !important;
+}
+
+.MuiSvgIcon-root {
+  color: #FFFFFF !important;
+}
+
+.stopSelection {
+  color: #FFFFFF !important;
+  width: 50% !important;
+}
+
+.actions {
+  margin-top: 5%;
+}
+
+.selectInput {
+  display: block;
+  margin-right: 5%;
+  width: 50%;
+}
+
+#selectInputBlocks {
+  display: flex !important;
+}
+
+#mainAppActions {
+  width: 100%;
+}
+
+#mainAppActions > button {
+  margin-right: 5%;
+  width: 30%;
+  border-radius: 2%
+}
+
+#searchType {
+  width: 100%;
 }

@@ -19,7 +19,7 @@ export function SearchByBus(props) {
     }
 
     return (
-        <Container id="searchByBus">
+        <Container id="searchByBus" className="actionBlock">
             <TextField onChange={handleChange} value={busNumber} id="outlined-basic" label="Enter Bus Number" variant="outlined" />
             <Link to={getLink(location, 'bus_status')} state={{busNum: parseInt(busNumber)}}>
                 <Button>Search</Button>

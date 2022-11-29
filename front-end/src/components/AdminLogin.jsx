@@ -6,7 +6,6 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import { theme } from '../styles/Theme';
 
 export default function AdminLogin(props) {
 
@@ -47,14 +46,12 @@ function Login(props) {
         updatePwd(event.target.value)
     }
 
-    console.log(theme)
-
     return (
         <div>
             <Button variant="outlined" id="adminLogin" onClick={handleClickOpen}>
                 Admin Login
             </Button>
-            <Dialog open={open} onClose={handleClose} color={theme.palette.primary}>
+            <Dialog open={open} onClose={handleClose}>
                 <DialogTitle>Admin Login</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
@@ -64,6 +61,7 @@ function Login(props) {
                         autoFocus
                         margin="dense"
                         id="admin-username"
+                        className="dialogTextField"
                         label="Username"
                         type="text"
                         variant="standard"
@@ -73,6 +71,7 @@ function Login(props) {
                         autoFocus
                         margin="dense"
                         id="admin-password"
+                        className="dialogTextField"
                         label="Password"
                         type="password"
                         variant="standard"
@@ -96,7 +95,7 @@ function LogOut(props) {
 
     return (
         <div>
-            <Button variant="outlined" onClick={handleLogOut}>
+            <Button variant="outlined" id="adminLogout" onClick={handleLogOut}>
                 Log Out
             </Button>
         </div>
