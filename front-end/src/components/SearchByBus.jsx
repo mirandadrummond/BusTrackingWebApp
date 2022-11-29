@@ -35,20 +35,22 @@ export function SearchByBus(props) {
             {
                 loading ? <p>Loading please wait.</p> : error ? <p>Error loading data please refresh the page.</p> :
                     <Container id="searchByBus" className="actionBlock">
-                        <TextField onChange={handleChange} value={busNumber} id="outlined-basic" label="Enter Bus Number" variant="outlined" />
-                        <Link to={getLink(location, 'bus_status')} state={{ busNum: parseInt(busNumber) }}>
-                            <Button>Search</Button>
-                        </Link>
-                        <p>Active Buses:</p>
-
-                        {
-                            buses.map(bus => {
-                                return (
-                                    <span>Bus: {bus.bus_number} </span>
-                                )
-                            })
-                        }
-
+                        <div>
+                            <TextField onChange={handleChange} value={busNumber} id="outlined-basic" label="Enter Bus Number" variant="outlined" />
+                            <Link to={getLink(location, 'bus_status')} state={{ busNum: parseInt(busNumber), buses: buses, exists: true }}>
+                                <Button>Search</Button>
+                            </Link>
+                        </div>
+                        <div id="activeBusText">
+                            <span>Active Buses:   </span>
+                            {
+                                buses.map(bus => {
+                                    return (
+                                        <span>Bus: {bus.bus_number} </span>
+                                    )
+                                })
+                            }
+                        </div>
                     </Container>
             }
         </>

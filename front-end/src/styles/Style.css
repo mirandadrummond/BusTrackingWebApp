@@ -142,3 +142,8 @@ label {
 #searchBar {
   margin-top: 5%;
 }
+
+.stopName {
+  display: inline-block;
+  width: 40%;
+}

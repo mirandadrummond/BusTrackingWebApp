@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios'
 import { Link } from "react-router-dom";
 import { useLocation } from 'react-router-dom'
-import { getLink } from "../utils";
+import { getLink, getStops } from "../utils";
 
 export function SearchByStops(props) {
     const [startStop, updateStartStop] = useState(props.startStop);
@@ -57,19 +57,6 @@ export function SearchByStops(props) {
             setStops(routes.filter(route => route.line === line)[0].stops)
         }
     }, [line])
-
-    const getStops = (arr) => {
-        return arr.map((currentStop, i, arr) => {
-            let stopName = currentStop.name;
-            if (!isNaN(parseInt(stopName.charAt(stopName.length - 1)) && isNaN(parseInt(stopName.charAt(stopName.length - 2))))) {
-                let direction = parseInt(stopName.charAt(stopName.length - 1)) === 1 ? ' (Inbound)' : ' (Outbound)'
-
-                return { id: currentStop.bus_stop_id, name: (stopName.slice(0, stopName.length - 1) + direction) }
-            } else {
-                return currentStop
-            }
-        })
-    }
 
     console.log(stops)
 
