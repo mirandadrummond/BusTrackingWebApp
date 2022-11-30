@@ -49,7 +49,7 @@ function ExpectedTimes(props) {
     return (
         <Container>
             {
-                loading ? <p>Loading data please wait</p> : error ? <p>Error loading data please refresh the page</p> :
+                loading ? <p>Loading data please wait</p> : error || times.length === 0 ? <p>Error loading data please refresh the page</p> :
                     <div id="betweenStops">
                         <div>
                             <h2 id="stopSeach">
