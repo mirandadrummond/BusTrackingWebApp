@@ -1,0 +1,157 @@
+html {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+body {
+  margin-top: 0%;
+  margin-left: 0%;
+  width: 100%;
+  background-color: #242333;
+  color: #FFFFFF !important;
+}
+
+button {
+  border-color: #FFFFFF !important;
+  color: #FFFFFF !important;
+
+}
+
+#nav {
+  display: flex;
+  padding-left: 2%;
+}
+
+#navTitle {
+  width: fit-content;
+  color: #FFFFFF;
+}
+
+#navBar {
+  list-style: none;
+  width: fit-content;
+  display: flex;
+  margin-top: 1.5%;
+}
+
+#link {
+  text-decoration: none;
+  padding: 5px;
+  margin-right: 10px;
+  border-radius: 10%;
+  border-width: 1pt;
+  border-color: #FFFFFF;
+  border-style: solid;
+  align-content: center;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.active {
+  background-color: #01B0D3;
+  border-color: #01B0D3 !important;
+  color: whitesmoke !important;
+}
+
+.Mui-selected {
+  border-color: #01B0D3 !important;
+  background-color: #01B0D3 !important;
+  color: #FFFFFF !important;
+}
+
+.MuiOutlinedInput-notchedOutline {
+  border-color: #FFFFFF !important;
+}
+
+fieldset {
+  color: #FFFFFF !important;
+}
+
+.adminButton {
+  padding: 11px !important;
+  width: 125px !important;
+}
+
+.adminAction {
+  padding: 11px !important;
+}
+
+#searchByBus {
+  margin-top: 20pt;
+}
+
+#outlined-basic {
+  border-color: #FFFFFF !important;
+  color: #FFFFFF !important;
+}
+
+.MuiDialog-container {
+  background-color: #01B0D3;
+}
+
+.dialogButton {
+  color: #242333 !important;
+}
+
+.dialogTextField {
+  width: 30%;
+  margin-right: 50px !important;
+}
+
+label {
+  color: #FFFFFF !important;
+}
+
+.MuiSvgIcon-root {
+  color: #FFFFFF !important;
+}
+
+.stopSelection {
+  color: #FFFFFF !important;
+  width: 50% !important;
+}
+
+.actions {
+  margin-top: 5%;
+}
+
+.selectInput {
+  display: block;
+  margin-right: 5%;
+  width: 50%;
+}
+
+#selectInputBlocks {
+  display: flex !important;
+}
+
+#mainAppActions {
+  width: 100%;
+  height: 2%;
+}
+
+#mainAppActions > button {
+  margin-right: 5%;
+  width: 80%;
+  border-radius: 2%
+}
+
+#searchType {
+  width: 100%;
+}
+
+#searchBar {
+  margin-top: 5%;
+}
+
+.stopName {
+  display: inline-block;
+  width: 40%;
+}
+
+h2 {
+  margin-right: 30%;
+}
+
+#betweenStops {
+  display: flex;
+}
