@@ -15,16 +15,26 @@ export const getStops = (arr) => {
 
 export const cleanStopString = (str) => {
     if (!isNaN(parseInt(str.charAt(str.length - 1)) && isNaN(parseInt(str.charAt(str.length - 2))))) {
-        let direction = parseInt(str.charAt(str.length - 1)) === 1 ? ' (Inbound)' : ' (Outbound)'
+        let direction = parseInt(str.charAt(str.length - 1)) === 1 ? ' (Outbound)' : ' (Inbound)'
         return str.slice(0, str.length - 1) + direction
     }
     return str
 }
 
-export const formatTimes = (time) => {
+export const formatTimes = (time, time2) => {
+    console.log(time, time2)
     const currentTime = new Date(Date.now()).getTime();
     const arrivalTime = new Date(time).getTime();
-    const diff = new Date(arrivalTime - currentTime)
-    console.log(currentTime, arrivalTime, diff)
-    return (diff.getTime() / 6000).toFixed(2);
+    if (time2 === undefined) {
+        let diff = new Date(arrivalTime - currentTime).getTime() / 60000
+        if (diff < 1) diff *= -1
+        return diff.toFixed(0);
+    } else {
+        const endStopTime = new Date(time2).getTime()
+        let diff = new Date((arrivalTime - currentTime) + (endStopTime - arrivalTime)).getTime() / 60000
+
+        if (diff < 1) diff *= -1
+    
+        return diff.toFixed(0);
+    }
 }

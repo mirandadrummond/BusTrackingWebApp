@@ -64,7 +64,7 @@ export function SearchByStops(props) {
                     error ? <div id="stop-search-error">Encountered Error when loading. Please refresh the page.</div> :
                         <Container id="stopSelect">
                             <div id="selectInputBlocks">
-                                <div class="selectInput">
+                                <div className="selectInput">
                                     <InputLabel className="selectStop" id="selectLineLabel">Select Line</InputLabel>
                                     <Select
                                         id="selectLine"
@@ -77,7 +77,7 @@ export function SearchByStops(props) {
                                         <MenuItem value={1}>Line 2</MenuItem>
                                     </Select>
                                 </div>
-                                <div class="selectInput">
+                                <div className="selectInput">
                                     <InputLabel className="selectStop" id="selectStartStop">Starting Stop</InputLabel>
                                     <Select
                                         id="selectStartStop"
